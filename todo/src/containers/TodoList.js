@@ -8,6 +8,8 @@ class TodoList extends Component {
     
     toggleTodo = e => {
         e.target.classList.toggle('completed');
+        let id = Number(e.target.id);
+        this.props.toggleTodo(id);
     }
     render() { 
         return ( 
@@ -15,6 +17,7 @@ class TodoList extends Component {
                 {this.props.todoList.map(todo => {
                     return (
                         <li
+                        id={todo.id}
                         key={todo.id}
                         onClick={this.toggleTodo}>
                         {todo.text}
