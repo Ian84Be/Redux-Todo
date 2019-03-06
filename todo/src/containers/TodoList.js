@@ -1,11 +1,12 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 const TodoList = props => {
     return ( 
         <ul>
-            {props.todos.map(todo => {
+            {props.todoList.map(todo => {
                 return (
-                    <li key={Date.now()}>
+                    <li key={todo.id}>
                         {todo.text}
                     </li>
                 );
@@ -13,5 +14,10 @@ const TodoList = props => {
         </ul>
      );
 }
+
+const mapStateToProps = state => ({
+    todoList: state.todos
+});
  
-export default TodoList;
+// export default TodoList;
+export default connect(mapStateToProps)(TodoList);

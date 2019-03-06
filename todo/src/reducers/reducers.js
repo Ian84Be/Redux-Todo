@@ -1,21 +1,27 @@
 import {ADD_TODO} from '../actions';
 
-const initialState = [
-    {
-      text: 'Use Redux',
-      completed: false,
-    }
-  ];
+const initialState = {
+    todos: [
+        {
+            text:'initialState text',
+            id: Date.now(),
+            completed: false,
+        },
+    ]
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_TODO:
-            return [
+            const newTodo = {
+                text:action.payload,
+                id: Date.now(),
+                completed: false,
+            };
+            return {
                 ...state,
-                {
-                    text:action.text,
-                }
-            ];
+                todos: [...state.todos, newTodo]
+            };
         default:
             return state;
     }
