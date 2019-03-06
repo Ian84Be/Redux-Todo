@@ -1,4 +1,4 @@
-import {ADD_TODO} from '../actions';
+import {ADD_TODO, TOGGLE_TODO} from '../actions';
 
 const initialState = {
     todos: [
@@ -22,6 +22,16 @@ export default (state = initialState, action) => {
                 ...state,
                 todos: [...state.todos, newTodo]
             };
+
+        case TOGGLE_TODO:
+            state.todos.forEach(todo => {
+                if (todo.id === action.payload) {
+                    todo.completed = !todo.completed; 
+                }       
+            });
+            return state;
+            
+
         default:
             return state;
     }
