@@ -1,0 +1,14 @@
+ul {
+
+    li {
+        font-size:2rem;
+
+        &.completed {
+            text-decoration: line-through;
+        }
+
+        &:hover {
+            color:red;
+        }
+    }
+}
